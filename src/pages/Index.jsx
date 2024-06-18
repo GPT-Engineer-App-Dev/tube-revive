@@ -39,7 +39,7 @@ const Index = () => {
           {/* Navigation */}
           <Flex justify="space-between" align="center" mb={4}>
             <HStack spacing={2}>
-              <Image src={YouTubeLogo} alt="YouTube Logo" boxSize="40px" />
+              <Image src={YouTubeLogo} alt="YouTube Logo" boxSize="80px" />
             </HStack>
           </Flex>
 
