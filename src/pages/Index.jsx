@@ -1,4 +1,4 @@
-import { Box, Container, Flex, Image, Text, VStack, HStack, IconButton } from "@chakra-ui/react";
+import { Box, Container, Flex, Image, Text, VStack, HStack, Button } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
 import YouTubeLogo from "../assets/youtube-logo.svg";
@@ -24,15 +24,24 @@ const Index = () => {
     },
     // Add more sample videos as needed
   ]);
+
   return (
     <Container maxW="container.xl" p={4}>
       <Flex direction="row">
         {/* Side Panel */}
-        <Flex direction="column" w="200px" p={4} borderRight="1px solid #e2e8f0">
-          <IconButton aria-label="Home" icon={<FaHome />} mb={4} />
-          <IconButton aria-label="Trending" icon={<FaFire />} mb={4} />
-          <IconButton aria-label="Explore" icon={<FaRegCompass />} mb={4} />
-          <IconButton aria-label="Profile" icon={<FaRegUser />} mb={4} />
+        <Flex direction="column" w="250px" p={4} borderRight="1px solid #e2e8f0">
+          <Button leftIcon={<FaHome />} variant="ghost" justifyContent="flex-start" mb={4}>
+            Home
+          </Button>
+          <Button leftIcon={<FaFire />} variant="ghost" justifyContent="flex-start" mb={4}>
+            Trending
+          </Button>
+          <Button leftIcon={<FaRegCompass />} variant="ghost" justifyContent="flex-start" mb={4}>
+            Explore
+          </Button>
+          <Button leftIcon={<FaRegUser />} variant="ghost" justifyContent="flex-start" mb={4}>
+            Profile
+          </Button>
         </Flex>
 
         {/* Main Content */}
@@ -47,7 +56,7 @@ const Index = () => {
           {/* Video Thumbnails */}
           <VStack spacing={8}>
             {videoData.map((video) => (
-              <Box key={video.id} w="100%">
+              <Box key={video.id} w="100%" _hover={{ transform: "scale(1.02)", transition: "0.3s" }}>
                 <Image src={video.thumbnail} alt={video.title} borderRadius="md" />
                 <Flex mt={2} justify="space-between" align="center">
                   <Box>
