@@ -1,28 +1,51 @@
 import { Box, Container, Flex, Image, Text, VStack, HStack, IconButton } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { createApi } from "unsplash-js";
+
+const unsplash = createApi({
+  accessKey: "YOUR_UNSPLASH_ACCESS_KEY",
+});
 import YouTubeLogo from "../assets/youtube-logo.svg";
 import { FaHome, FaFire, FaRegCompass, FaRegUser } from "react-icons/fa";
 
-const videoData = [
-  {
-    id: 1,
-    title: "Sample Video 1",
-    thumbnail: "https://via.placeholder.com/320x180",
-    channel: "Channel 1",
-    views: "1M views",
-    time: "1 day ago",
-  },
-  {
-    id: 2,
-    title: "Sample Video 2",
-    thumbnail: "https://via.placeholder.com/320x180",
-    channel: "Channel 2",
-    views: "500K views",
-    time: "2 days ago",
-  },
-  // Add more sample videos as needed
-];
-
 const Index = () => {
+  const [videoData, setVideoData] = useState([
+    {
+      id: 1,
+      title: "Sample Video 1",
+      thumbnail: "",
+      channel: "Channel 1",
+      views: "1M views",
+      time: "1 day ago",
+    },
+    {
+      id: 2,
+      title: "Sample Video 2",
+      thumbnail: "",
+      channel: "Channel 2",
+      views: "500K views",
+      time: "2 days ago",
+    },
+    // Add more sample videos as needed
+  ]);
+
+  useEffect(() => {
+    const fetchThumbnails = async () => {
+      const response = await unsplash.search.getPhotos({
+        query: "video thumbnail",
+        perPage: videoData.length,
+      });
+
+      const updatedVideoData = videoData.map((video, index) => ({
+        ...video,
+        thumbnail: response.response.results[index].urls.small,
+      }));
+
+      setVideoData(updatedVideoData);
+    };
+
+    fetchThumbnails();
+  }, []);
   return (
     <Container maxW="container.xl" p={4}>
       <Flex direction="row">
