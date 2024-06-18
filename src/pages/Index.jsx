@@ -1,4 +1,5 @@
 import { Box, Container, Flex, Image, Text, VStack, HStack, IconButton } from "@chakra-ui/react";
+import YouTubeLogo from "../assets/youtube-logo.svg";
 import { FaHome, FaFire, FaRegCompass, FaRegUser } from "react-icons/fa";
 
 const videoData = [
@@ -27,7 +28,10 @@ const Index = () => {
       <Flex direction="column">
         {/* Navigation */}
         <Flex justify="space-between" align="center" mb={4}>
-          <Text fontSize="2xl" fontWeight="bold">MyTube</Text>
+          <HStack spacing={2}>
+            <Image src={YouTubeLogo} alt="YouTube Logo" boxSize="40px" />
+            <Text fontSize="2xl" fontWeight="bold">MyTube</Text>
+          </HStack>
           <HStack spacing={4}>
             <IconButton aria-label="Home" icon={<FaHome />} />
             <IconButton aria-label="Trending" icon={<FaFire />} />
