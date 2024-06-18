@@ -9,7 +9,7 @@ const Index = () => {
     {
       id: 1,
       title: "Sample Video 1",
-      thumbnail: "src/assets/video-thumbnail-1.jpg",
+      thumbnail: "/video-thumbnail-1.jpg",
       channel: "Channel 1",
       views: "1M views",
       time: "1 day ago",
@@ -17,7 +17,7 @@ const Index = () => {
     {
       id: 2,
       title: "Sample Video 2",
-      thumbnail: "src/assets/video-thumbnail-2.jpg",
+      thumbnail: "/video-thumbnail-2.jpg",
       channel: "Channel 2",
       views: "500K views",
       time: "2 days ago",
