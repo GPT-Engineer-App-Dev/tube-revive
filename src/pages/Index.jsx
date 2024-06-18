@@ -25,36 +25,40 @@ const videoData = [
 const Index = () => {
   return (
     <Container maxW="container.xl" p={4}>
-      <Flex direction="column">
-        {/* Navigation */}
-        <Flex justify="space-between" align="center" mb={4}>
-          <HStack spacing={2}>
-            <Image src={YouTubeLogo} alt="YouTube Logo" boxSize="40px" />
-            <Text fontSize="2xl" fontWeight="bold">MyTube</Text>
-          </HStack>
-          <HStack spacing={4}>
-            <IconButton aria-label="Home" icon={<FaHome />} />
-            <IconButton aria-label="Trending" icon={<FaFire />} />
-            <IconButton aria-label="Explore" icon={<FaRegCompass />} />
-            <IconButton aria-label="Profile" icon={<FaRegUser />} />
-          </HStack>
+      <Flex direction="row">
+        {/* Side Panel */}
+        <Flex direction="column" w="200px" p={4} borderRight="1px solid #e2e8f0">
+          <IconButton aria-label="Home" icon={<FaHome />} mb={4} />
+          <IconButton aria-label="Trending" icon={<FaFire />} mb={4} />
+          <IconButton aria-label="Explore" icon={<FaRegCompass />} mb={4} />
+          <IconButton aria-label="Profile" icon={<FaRegUser />} mb={4} />
         </Flex>
 
-        {/* Video Thumbnails */}
-        <VStack spacing={8}>
-          {videoData.map((video) => (
-            <Box key={video.id} w="100%">
-              <Image src={video.thumbnail} alt={video.title} borderRadius="md" />
-              <Flex mt={2} justify="space-between" align="center">
-                <Box>
-                  <Text fontWeight="bold">{video.title}</Text>
-                  <Text fontSize="sm" color="gray.500">{video.channel}</Text>
-                  <Text fontSize="sm" color="gray.500">{video.views} • {video.time}</Text>
-                </Box>
-              </Flex>
-            </Box>
-          ))}
-        </VStack>
+        {/* Main Content */}
+        <Flex direction="column" flex="1" ml={4}>
+          {/* Navigation */}
+          <Flex justify="space-between" align="center" mb={4}>
+            <HStack spacing={2}>
+              <Image src={YouTubeLogo} alt="YouTube Logo" boxSize="40px" />
+            </HStack>
+          </Flex>
+
+          {/* Video Thumbnails */}
+          <VStack spacing={8}>
+            {videoData.map((video) => (
+              <Box key={video.id} w="100%">
+                <Image src={video.thumbnail} alt={video.title} borderRadius="md" />
+                <Flex mt={2} justify="space-between" align="center">
+                  <Box>
+                    <Text fontWeight="bold">{video.title}</Text>
+                    <Text fontSize="sm" color="gray.500">{video.channel}</Text>
+                    <Text fontSize="sm" color="gray.500">{video.views} • {video.time}</Text>
+                  </Box>
+                </Flex>
+              </Box>
+            ))}
+          </VStack>
+        </Flex>
       </Flex>
     </Container>
   );
